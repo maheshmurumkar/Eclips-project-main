@@ -3,50 +3,59 @@ package com.exponent.bankaplication.serviceimpl;
 import java.util.Scanner;
 
 import com.exponent.bankaplication.service.RBI;
+import com.exponent.bankaplication.validation.Validation;
 import com.exponent.bankingaplication.model.Account;
 
 public class SBIImple implements RBI {
 	Scanner sc = new Scanner(System.in);
 	Account ac = new Account();
-
+boolean accreated = false;
 	@Override
 	public void createAccount() {
-		System.out.println("Enter Your Acc No");
-		int accno = sc.nextInt();
-		ac.setAccNo(accno);
+		
 		System.out.println("Enter Your Name");
 		ac.setName(sc.next());
 		System.out.println("Enter Your Adhar Card No");
-		ac.setAdharCardNo(sc.nextLong());
+		ac.setAdharCardNo(Validation.adharNum());
 		System.out.println("Enter Your Pan Card No");
 		ac.setPanCardNo(sc.next());
 		System.out.println("Enter Your Contact No");
-		ac.setContact(sc.nextLong());
+		ac.setContact(Validation.contNum());
 		System.out.println("Enter Your Email Id");
 		ac.setEmailId(sc.next());
 		System.out.println("Enter Your Account opening Balance");
-		;
 		ac.setAccBalance(sc.nextDouble());
+		System.out.println("This is Your Acc No");		
+		ac.setAccNo(Validation.accNum());
+		System.out.println("Your acc num is: "+ac.getAccNo());
+		accreated = true;
 	}
 
 	@Override
 	public void showAccountDetails() {
+		if(accreated) {
 		System.out.println("Enter Your Acc No");
-		int enteredaccno = sc.nextInt();
-		if (enteredaccno == ac.getAccNo()) {
+		double enteredaccno = sc.nextDouble();
+		if (enteredaccno ==ac.getAccNo() ) {
 			System.out.println(ac);
-
 		}
+		}
+		System.out.println("You need to create account first");
+		createAccount();
 	}
 
 	@Override
 	public void showAcoountBalance() {
+		if(accreated) {
 		System.out.println("Your ACC Balance is: " + ac.getAccBalance());
-
+		}
+		System.out.println("You need to create account first");
+		createAccount();
 	}
 
 	@Override
 	public void withdrowMoney() {
+		if(accreated) {
 		System.out.println("Enter Amount you want to withdrow in your account");
 		double withdrow = sc.nextDouble();
 		if (withdrow > 500) {
@@ -57,11 +66,14 @@ public class SBIImple implements RBI {
 		} else {
 			System.out.println("You shoud Withdrow amount greater than 500");
 		}
-
+		}
+		System.out.println("You need to create account first");
+		createAccount();
 	}
 
 	@Override
 	public void depositMoney() {
+		if(accreated) {
 		System.out.println("Enter Amount you want to Deposit in your account");
 		double deposit = sc.nextDouble();
 		if (deposit > 500) {
@@ -72,11 +84,14 @@ public class SBIImple implements RBI {
 		} else {
 			System.out.println("You shoud Deposit amount greater than 500");
 		}
-
+		}
+		System.out.println("You need to create account first");
+		createAccount();
 	}
 
 	@Override
 	public void updateAccountDetails() {
+		if(accreated) {
 		System.out.println("Enter Your Acc No");
 		int enteredaccno = sc.nextInt();
 		if (enteredaccno == ac.getAccNo()) {
@@ -107,6 +122,9 @@ public class SBIImple implements RBI {
 		    
 		    }
 		}
+		}
+		System.out.println("You need to create account first");
+		createAccount();
 	}
 
 }

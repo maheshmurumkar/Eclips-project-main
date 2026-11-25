@@ -1,7 +1,7 @@
 package com.exponent.bankingaplication.model;
 
 public class Account {
-	private int accNo;
+	private long accNo;
 	private String name;
 	private long adharCardNo;
 	private String panCardNo;
@@ -9,10 +9,10 @@ public class Account {
 	private String emailId;
 	private double accBalance;
 	
-	public int getAccNo() {
+	public long getAccNo() {
 		return accNo;
 	}
-	public void setAccNo(int accNo) {
+	public void setAccNo(long accNo) {
 		this.accNo = accNo;
 	}
 	public String getName() {
