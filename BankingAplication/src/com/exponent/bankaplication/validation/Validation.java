@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Validation {
 	
-	
 	public static long accNum() {
 		long accNum= (long)(Math.random() * Math.pow(10,12));
 		return accNum;
@@ -35,4 +34,5 @@ public class Validation {
 		}
 		return adharNum();
 	}
+	
 }

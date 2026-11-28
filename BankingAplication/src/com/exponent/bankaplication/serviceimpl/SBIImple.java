@@ -39,18 +39,18 @@ boolean accreated = false;
 		if (enteredaccno ==ac.getAccNo() ) {
 			System.out.println(ac);
 		}
-		}
+		}else {
 		System.out.println("You need to create account first");
-		createAccount();
+		createAccount();}
 	}
 
 	@Override
 	public void showAcoountBalance() {
 		if(accreated) {
 		System.out.println("Your ACC Balance is: " + ac.getAccBalance());
-		}
+		}else {
 		System.out.println("You need to create account first");
-		createAccount();
+		createAccount();}
 	}
 
 	@Override
@@ -66,9 +66,9 @@ boolean accreated = false;
 		} else {
 			System.out.println("You shoud Withdrow amount greater than 500");
 		}
-		}
+		}else {
 		System.out.println("You need to create account first");
-		createAccount();
+		createAccount();}
 	}
 
 	@Override
@@ -78,22 +78,22 @@ boolean accreated = false;
 		double deposit = sc.nextDouble();
 		if (deposit > 500) {
 			double updatedbalance = ac.getAccBalance() + deposit;
-			System.out.println("You have succefully Deposited : " + deposit + " rs from your account");
+			System.out.println("You have succefully Deposited : " + deposit + " rs into your account");
 			System.out.println("Your balance is : " + updatedbalance + " rs");
 			ac.setAccBalance(updatedbalance);
 		} else {
 			System.out.println("You shoud Deposit amount greater than 500");
 		}
-		}
+		}else {
 		System.out.println("You need to create account first");
-		createAccount();
+		createAccount();}
 	}
 
 	@Override
 	public void updateAccountDetails() {
 		if(accreated) {
 		System.out.println("Enter Your Acc No");
-		int enteredaccno = sc.nextInt();
+		long enteredaccno = sc.nextLong();
 		if (enteredaccno == ac.getAccNo()) {
 			System.out.println("Which field you want to Update");
 			System.out.println("__________________________");
@@ -116,15 +116,20 @@ boolean accreated = false;
 		   break;
 		    case 3:
 		    	System.out.println("Enter new Contact No");
-		    	ac.setContact(sc.nextLong());
+		    	ac.setContact(Validation.contNum());
 		    	System.out.println("Contact no updated succesfully");
 		    	break;
 		    
 		    }
+		}else {
+			System.out.println("ENTER CORRECT ACC NO");
 		}
+		
 		}
+		else {
 		System.out.println("You need to create account first");
 		createAccount();
+		}
 	}
 
 }
