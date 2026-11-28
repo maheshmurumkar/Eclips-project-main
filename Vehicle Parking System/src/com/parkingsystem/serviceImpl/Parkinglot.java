@@ -57,13 +57,13 @@ public class Parkinglot implements Parking {
 		if(vehicleadded) {
 		System.out.println("Enter which type of vehicle you want to count: ");
 		String type = sc.next();
-		
+		int vehicletype=0;
 		for (Vehicle vehicle : arrayOfVehicle) {
-		if(vehicle != null && vehicle.getVehicleNumber().equals(type))
+		if(vehicle != null && vehicle.getVehicleType().equals(type))
 		{
-			count++;	}
+		 vehicletype++;	}
 		}
-		System.out.println("The count of vehicle type "+type+" is: "+count);
+		System.out.println("The count of vehicle type "+type+" is: "+vehicletype);
 		}else {System.out.println("Parking lot is Empty");}
 		}
 		
